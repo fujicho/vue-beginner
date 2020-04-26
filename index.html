@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<title>はじめてのVue.js</title>
+<title>Vue.Stationary store</title>
 <script src="https://unpkg.com/vue@2.5.17"></script>
   <div id="app">
     <ul>
@@ -9,6 +9,11 @@
     </ul>
     <hr>
     <div :style="errorMessageStyle">
+      <ul>
+        <li v-for="item in items" v-bind:key='item.name'>
+          {{ item.name }}: {{item.price }} × {{ item.quantity }} = {{ item.price * item.quantity | numberWithDelimiter }}円
+        </li>
+      </ul>
       <p>合計：{{totalPrice|numberWithDelimiter}}</p>
       <p>お支払額:{{totalPriceWithTax|numberWithDelimiter}}</p>
       <p v-show="!canBuy">
