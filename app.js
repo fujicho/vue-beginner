@@ -22,16 +22,24 @@ var vm = new Vue({
     items: items
   },
   filters: {
-  	numberWithDelimiter: function(value){
+    numberWithDelimiter: function(value){
   if (!value) {
-  	return '0'
+    return '0'
   }
   return value.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,')
   }
   },
+  methods: {
+    doBuy: function(){
+      alert(this.totalPriceWithTax + '円のお買い上げ！')
+      this.items.forEach(function (item){
+        item.quantity = 0
+      })
+    }
+  },
   computed:{
-  	totalPrice: function(){
-    	return this.items.reduce(function(sum,item){
+    totalPrice: function(){
+      return this.items.reduce(function(sum,item){
       	return sum + (item.price * item.quantity)
       },0)
     },
@@ -39,11 +47,11 @@ var vm = new Vue({
     return Math.floor(this.totalPrice * 1.10)
     },
     canBuy: function(){
-     return this.totalPrice >= 1000
+      return this.totalPrice >= 1000
     },
     errorMessageStyle: function(){
     return {
-    	border: this.canBuy ? '' : '1px solid red',
+      border: this.canBuy ? '' : '1px solid red',
       color: this.canBuy ? '' : 'red'
     }
     }
