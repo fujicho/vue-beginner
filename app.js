@@ -22,7 +22,8 @@ var items = [
 var vm = new Vue({
   el: '#app',
   data: {
-    items: items
+    items: items,
+    detail: '※商品名をクリックするとここに詳細が表示されます'
   },
   filters: {
     numberWithDelimiter: function(value){
@@ -38,6 +39,9 @@ var vm = new Vue({
       this.items.forEach(function (item){
         item.quantity = 0
       })
+    },
+    showDetail: function(text){
+      this.detail = text
     }
   },
   computed:{
@@ -57,7 +61,7 @@ var vm = new Vue({
       border: this.canBuy ? '' : '1px solid red',
       color: this.canBuy ? '' : 'red'
     }
-    }
+    },
   }
 })
 window.vm = vm

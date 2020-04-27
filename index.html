@@ -4,10 +4,12 @@
   <div id="app">
     <ul>
       <p>詳細を知りたい商品をクリックしてね！</p>
-      <li v-for="item in items" v-bind:key='item.name'>
-        {{ item.name }}
+      <li v-for="item in items" v-bind:key='item.name' >
+        <p v-on:click="showDetail(item.text)">{{ item.name }}</p>
       </li>
     </ul>
+    <hr>
+    {{ detail }}
     <hr>
     <ul>
       <li v-for="item in items" v-bind:key='item.name'>
