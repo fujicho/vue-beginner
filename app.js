@@ -3,16 +3,19 @@ var items = [
     name:'鉛筆',
     price: 300,
     quantity: 0,
+    text: 'ドラクエのバトルえんびつ(キャップは付属していません。)'
   },
   {
     name:'ノート',
     price: 400,
     quantity: 0,
+    text: '方眼罫になっていてグラフが描きやすい！'
   },
   {
     name:'消しゴム',
     price: 500,
     quantity: 0,
+    text: '野菜の形をしていてとても消しにくい'
   }
 ]
 
