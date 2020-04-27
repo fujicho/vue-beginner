@@ -3,6 +3,13 @@
 <script src="https://unpkg.com/vue@2.5.17"></script>
   <div id="app">
     <ul>
+      <p>詳細を知りたい商品をクリックしてね！</p>
+      <li v-for="item in items" v-bind:key='item.name'>
+        {{ item.name }}
+      </li>
+    </ul>
+    <hr>
+    <ul>
       <li v-for="item in items" v-bind:key='item.name'>
         {{item.name}}の個数: <input type="number" v-model.lazy="item.quantity" min="0">
       </li>
