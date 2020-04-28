@@ -23,7 +23,8 @@ var vm = new Vue({
   el: '#app',
   data: {
     items: items,
-    detail: '※商品名をクリックするとここに詳細が表示されます'
+    detail: '※商品名をクリックするとここに詳細が表示されます',
+    balance: 10000
   },
   filters: {
     numberWithDelimiter: function(value){
@@ -34,14 +35,30 @@ var vm = new Vue({
   }
   },
   methods: {
-    doBuy: function(){
-      alert(this.totalPriceWithTax + '円のお買い上げ！')
-      this.items.forEach(function (item){
-        item.quantity = 0
-      })
-    },
     showDetail: function(text){
       this.detail = text
+    },
+    doBuy: function(){
+      this.showBuying()
+      this.totalBalance()
+      this.undo()
+    },
+    totalBalance: function(){
+      if (this.balance >= this.totalPriceWithTax){
+        this.balance = this.balance - this.totalPriceWithTax
+      }
+    },
+    showBuying: function(){
+      if (this.balance >= this.totalPriceWithTax){
+        alert(this.totalPriceWithTax + '円のお買い上げ！')
+      } else {
+        alert(this.totalPriceWithTax - this.balance + '円不足しています！！')
+      }
+    },
+    undo: function(){
+      this.items.forEach(function (item){
+        item.quantity = 100
+      })
     }
   },
   computed:{

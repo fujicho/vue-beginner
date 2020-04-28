@@ -30,7 +30,11 @@
         {{1000 |numberWithDelimiter}}円以上からご購入いただけます
       </p>
       <!-- ボタンが押されたら、メソッドを呼び出す -->
-      <button v-bind:disabled="!canBuy" v-on:click="doBuy">購入</button>
+      <button v-bind:disabled="!canBuy" v-on:click="doBuy()" v-on:click="totalBalance">購入</button>
+    </div>
+    <br>
+    <div>
+      <p>所持金: {{balance|numberWithDelimiter}}</p>
     </div>
   </div>
 <script src="app.js"></script>
