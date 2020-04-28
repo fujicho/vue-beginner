@@ -57,7 +57,7 @@ var vm = new Vue({
     },
     undo: function(){
       this.items.forEach(function (item){
-        item.quantity = 100
+        item.quantity = 0
       })
     }
   },
@@ -71,7 +71,7 @@ var vm = new Vue({
     return Math.floor(this.totalPrice * 1.10)
     },
     canBuy: function(){
-      return this.totalPrice >= 1000
+      return this.totalPrice >= 1000　&& this.balance >= this.totalPriceWithTax
     },
     errorMessageStyle: function(){
     return {
