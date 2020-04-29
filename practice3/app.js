@@ -36,7 +36,7 @@ var counterButton = Vue.extend({
 new Vue({
   el: '#fruits-counter',
   components: {
-    'counterbutton': counterButton
+    'counter-button': counterButton
   },
   data: {
     total: 0,
