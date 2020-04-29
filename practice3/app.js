@@ -1,12 +1,19 @@
-Vue.component('item-desc',{
+Vue.component('fruits-item-name', {
   props: {
-    itemName: {
-      type: String
+    fruitsItem: {
+      type: Object,
+      required: true
     }
   },
-  template: '<p>{{ itemName }}は便利です。</p>'
+  template: '<li>{{ fruitsItem.name }}</li>'
 })
+
 new Vue({
-  el: '#app',
-  data: { myItem: 'pen'}
+  el: '#fruits-component',
+  data:{
+    fruitsItems: [
+      {name: '梨'},
+      {name: 'イチゴ'}
+    ]
+  }
 })

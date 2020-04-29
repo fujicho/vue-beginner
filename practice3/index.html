@@ -2,9 +2,10 @@
 <title>Vue component</title>
 <script src="https://unpkg.com/vue@2.5.17"></script>
 
-<div id=app>
-  <item-desc v-bind:item-name="myItem"></item-desc>
-  こんばんは
+<div id=fruits-component>
+    <ol>
+      <fruits-item-name v-for="fruit in fruitsItems" :key="fruit.name" :fruits-item="fruit"></fruits-item-name>
+    </ol>
 </div>
 
 
