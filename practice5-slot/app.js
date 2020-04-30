@@ -1,16 +1,26 @@
-// var MyButton = {
-//   template: `
-//   <button>
-//     <slot>OK</slot>
-//   </button>`
-// }
+var MyButton = {
+  data: function(){
+    return{
+      textLabel: 'child'
+    }
+  },
+  template: `
+  <button>
+    <slot>OK</slot>
+  </button>`
+}
 
-// new Vue({
-//   el: '#app',
-//   components: {
-//     MyButton: MyButton
-//   }
-// })
+new Vue({
+  el: '#app',
+  data: function(){
+    return {
+      textLabel: 'parent'
+    }
+  },
+  components: {
+    MyButton: MyButton
+  }
+})
 
 // var MyPage = {
 //   template: `
