@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<title>Vue component</title>
+<script src="https://unpkg.com/vue@2.5.17"></script>
+
+<div id="app">
+  <todo-list :todos="todos">
+    <li slot-scope="slotProps" v-if="slotProps.todo.isCompleted">
+      {{ slotProps.todo.text }}
+    </li>
+  </todo-list>
+</div>
+
+<script src="./app.js"></script>
