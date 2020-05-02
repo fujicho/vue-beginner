@@ -3,15 +3,39 @@ var getUsers = function(callback){
     callback(null,[
       {
         id:1,
-        name: 'Sohei Fujita'
+        name: 'Sohei Fujita',
       },
       {
         id:2,
-        name: 'Hamada Takashi'
+        name: 'Hamada Takashi',
       }
     ])
   },1000)
 }
+
+var userData = [
+  {
+    id:1,
+    name: 'Sohei Fujita',
+    description: 'オペ室で働いている自称エンジニアです。'
+  },
+  {
+    id:2,
+    name: 'Hamada Takashi',
+    description: 'おほほ'
+  }
+]
+
+var getUser = function (userId, callback){
+  setTimeout(function(){
+    var filteredUsers = usersData.filter(function(user){
+      return user.id === parseInt(userId, 10)
+    })
+    callback(null,filteredUsers && filteredUsers[0])
+  },1000)
+}
+
+var UserDetail
 
 var UserList = {
   template: '#user-list',
@@ -50,12 +74,16 @@ var router = new VueRouter({
     {
       path: '/top',
       component: {
-        template: '<div></div>'
+        template: '<div>トップページです。</div>'
       }
     },
     {
       path: '/users',
       component: UserList
+    },
+    {
+      path: '/users/:userID',
+      component: UserDetail
     }
   ]
 })
