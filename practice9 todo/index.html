@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<title>Vue Router</title>
+<style>
+
+</style>
+<div id='app'>
+  <nav>
+    <router-link to="/top">トップページ</router-link>
+    <router-link to="/users">ユーザー一覧ページ</router-link>
+  </nav>
+  <router-view></router-view>
+</div>
+
+<script src="https://unpkg.com/vue@2.5.17"></script>
+<script src="https://unpkg.com/vue-router@3.0.1"></script>
+
+<script type="text/x-template" id="user-list">
+  <div>ユーザー一覧ページです。</div>
+</script>
+
+<script src="./app.js"></script>
