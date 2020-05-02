@@ -34,7 +34,7 @@ var UserList = {
     fetchData: function(){
       this.loading = true
       getUsers((function (err, users){
-        this.loading = falase
+        this.loading = false
         if(err){
           this.error = err.toString()
         } else{
