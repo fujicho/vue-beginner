@@ -64,7 +64,7 @@ var UserList = {
 
 var UserDetail = {
   template: '#user-detail',
-  data: function() {
+  data: function () {
     return {
       loading: false,
       user: null,
@@ -73,7 +73,7 @@ var UserDetail = {
   },
 
   created: function () {
-    this.fetchData
+    this.fetchData()
   },
 
   watch: {
@@ -83,7 +83,8 @@ var UserDetail = {
   methods: {
     fetchData: function () {
       this.loading = true
-      getUser(this.$route.params.userId, (function(err, user) {
+      // this.$route.params.userId に現在のURL上のパラメーターに対応したuserIdが格納される
+      getUser(this.$route.params.userId, (function (err, user) {
         this.loading = false
         if (err) {
           this.error = err.toString()
@@ -106,6 +107,10 @@ var router = new VueRouter({
     {
       path: '/users',
       component: UserList
+    },
+    {
+      path: '/users/new',
+      component: UserCreate
     },
     {
       path: '/users/:userId',
