@@ -7,6 +7,7 @@
   <nav>
     <router-link to="/top">トップページ</router-link>
     <router-link to="/users">ユーザー一覧ページ</router-link>
+    <router-link to="/users/new">ユーザー新規登録</router-link>
   </nav>
   <router-view></router-view>
 </div>
@@ -51,7 +52,7 @@
       </div>
       <div>
         <label>説明文:</label>
-        <textarea v-model="user.descreption"></textarea>
+        <textarea v-model="user.description"></textarea>
       </div>
       <div v-if="error" class="error">
         {{ error }}
@@ -60,5 +61,20 @@
         <input type="button" @click="createUser" value="送信">
       </div>
     </div>
+  </div>
+</script>
+
+<script type="text/x-template" id="login">
+  <div>
+    <h2>Login</h2>
+    <p v-if="$route.query.redirect">
+      ログインしてください
+    </p>
+    <form @submit.prevent="login">
+      <label><input v-model="email" placeholder="email"></label>
+      <label><input v-model="pass" placeholder="password" type="password"></label><br>
+      <button type="submit">ログイン</button>
+      <p v-if="error" class="error">ログインに失敗しました</p>
+    </form>
   </div>
 </script>
