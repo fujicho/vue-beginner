@@ -207,7 +207,7 @@ var router = new VueRouter({
       path: '/users/new',
       component: UserCreate,
       beforeEnter: function (to,from,next){
-        if (!Auth.logeedIn()){
+        if (!Auth.loggedIn()){
           next({
             path: '/login',
             query: {redirect: to.fullPath}
@@ -236,5 +236,8 @@ var router = new VueRouter({
 })
 
 var app = new Vue({
+  data:{
+    Auth: Auth
+  },
   router: router
 }).$mount('#app')
