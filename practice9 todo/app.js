@@ -1,3 +1,45 @@
+var Auth = {
+  login: function (email, pass,cb){
+    setTimeout(function () {
+      if (email === 'vue@example.com' && pass === 'vue'){
+        localStorage.token = Math.random().toString(36).substring(7)
+        if (cb) { cb (true) }
+      } else {
+        if (cb) { cb (false)}
+      }
+    },0)
+  },
+
+  logout: function(){
+    delete localStorage.token
+  },
+
+  loggedIn: function(){
+    return !!localStorage.token
+  }
+}
+
+var Login = {
+  template: '#login',
+  data: function(){
+    return{
+      email: 'vue@example',
+      pass: '',
+      error: false
+    }
+  },
+  methods: {
+    login: function(){
+      Auth.login(this.email,this.pass,(function(loggedIn){
+        if(!loggedIn){
+          this.error = true
+        }else{
+          this.$router.replace(this.$route.query.redirect || '/')
+        }
+      }).bind(this))
+    }
+  }
+}
 
 var userData = [
   {
@@ -11,6 +53,59 @@ var userData = [
     description: 'おほほ'
   }
 ]
+
+var postUser = function(params,callback){
+  setTimeout(function(){
+    params.id = userData.length + 1
+    userData.push(params)
+    callback(null,params)
+  },1000)
+}
+
+var UserCreate = {
+  template: '#user-create',
+  data: function(){
+    return {
+      sending: false,
+      user: this.defaultUser(),
+      error: null
+    }
+  },
+
+  created: function(){
+  },
+
+  methods: {
+    defaultUser: function(){
+      return{
+        name: '',
+        description: ''
+      }
+    },
+
+    createUser: function(){
+      if (this.user.name.trim() === ''){
+        this.error = 'Nameは必須です'
+        return
+      }
+      if (this.user.description.trim() === ''){
+        this.error = 'Descriptionは必須です'
+        return
+      }
+      postUser(this.user,(function (err,user){
+        this.sending = false
+        if (err){
+          this.error = err.toString()
+        } else {
+          this.error = null
+          this.user = this.defaultUser()
+          alert('新規ユーザーが登録されました')
+          this.$router.push('/users')
+        }
+      }).bind(this))
+    }
+  }
+}
 
 var getUsers = function(callback){
   setTimeout(function () {
@@ -110,11 +205,32 @@ var router = new VueRouter({
     },
     {
       path: '/users/new',
-      component: UserCreate
+      component: UserCreate,
+      beforeEnter: function (to,from,next){
+        if (!Auth.logeedIn()){
+          next({
+            path: '/login',
+            query: {redirect: to.fullPath}
+          })
+        }else {
+          next()
+        }
+      }
     },
     {
       path: '/users/:userId',
       component: UserDetail
+    },
+    {
+      path: '/login',
+      component: Login
+    },
+    {
+      path: '/logout',
+      beforeEnter: function(to,from,next){
+        Auth.logout()
+        next('/')
+      }
     }
   ]
 })
