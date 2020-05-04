@@ -1,8 +1,14 @@
 new Vue({
   el: '#app',
-  data: function(){
+  data: function() {
     return {
-      isShown: false
-    }
-  }
-})
+      animationClass: 'bounce',
+      isShown: false,
+    };
+  },
+  computed: {
+    activeClass: function() {
+      return this.animationClass + ' animated';
+    },
+  },
+});
