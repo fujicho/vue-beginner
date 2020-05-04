@@ -28,5 +28,11 @@ var TextShareButton = {
   template:`
   <button @click="share">{{ buttonLabel }}</button>
   `,
-
+  data: function(){
+    return{
+      buttonLabel: 'シェアする',
+      _isProcessing: false
+    }
+  },
+  
 }
