@@ -23,3 +23,10 @@ var IconShareButton = {
     }
   }
 }
+
+var TextShareButton = {
+  template:`
+  <button @click="share">{{ buttonLabel }}</button>
+  `,
+
+}
