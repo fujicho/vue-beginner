@@ -34,5 +34,18 @@ var TextShareButton = {
       _isProcessing: false
     }
   },
-  
+  methods: {
+    share: function(){
+      if (this._isProcessing){
+        return
+      }
+      if (!window.confirm('シェアしますか？')){
+        return
+      }
+      this._isProcessing = true
+      setTimeout(() => {
+        window.alert('シェアしました')
+      },300)
+    }
+  }
 }
