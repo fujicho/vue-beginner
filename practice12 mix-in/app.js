@@ -49,3 +49,11 @@ var TextShareButton = {
     }
   }
 }
+
+new Vue({
+  el: '#app',
+  components: {
+    IconShareButton,
+    TextShareButton
+  }
+})
