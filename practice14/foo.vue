@@ -16,5 +16,7 @@
     margin: 4px;
     padding: 4px;
   }
-  .header{ font-size: 150%;}
+  .header{
+    font-size: 150%;
+    }
 </style>

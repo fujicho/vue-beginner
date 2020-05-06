@@ -2,7 +2,7 @@
   <div class="bar">
     <h1 class="header">Barコンポーネント</h1>
     <p>これはBarコンポーネントです。</p>
-    <foo class="header"/>
+    <foo/>
   </div>
 </template>
 
