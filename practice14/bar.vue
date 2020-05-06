@@ -2,6 +2,7 @@
   <div class="bar">
     <h1 class="header">Barコンポーネント</h1>
     <p>これはBarコンポーネントです。</p>
+    <foo class="header"/>
   </div>
 </template>
 
@@ -13,6 +14,9 @@ export default {
 </script>
 
 <style scoped>
-  .bar { border: 1px solid red; margin:4px;}
+  .bar {border: 1px solid red;
+        margin: 4px  ;
+        padding: 4px;
+        }
   .header { font-size: 125% }
 </style>

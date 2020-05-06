@@ -18,7 +18,11 @@ export default {
 }
 </script>
 
+<style scoped>
+</style>
+
 <style>
+  p { text-decoration: underline}
   #root {
     border: solid 1px blue;
     margin: 4px;
