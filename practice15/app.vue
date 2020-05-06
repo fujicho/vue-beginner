@@ -33,5 +33,20 @@ export default {
 </script>
 
 <style module="alert">
+.success{
+  color: green;
+}
+.error{
+  font-weight: bold;
+  color: red;
+}
+</style>
 
+<style module="textbox">
+  .success{
+    border: solid 2px green;
+  }
+  .error{
+    border: solid 2px red;
+  }
 </style>
